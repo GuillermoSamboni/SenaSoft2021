@@ -4,6 +4,20 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+<<<<<<< HEAD
     <string name="senasoft2021">SenaSoft2021</string>
     <string name="denuncias">Denuncias</string>
+=======
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="generate_qr_code">Generate Qr</string>
+    <string name="registerme">Registrarme</string>
+    <string name="not_have_account">No tengo cuenta</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="login">Login</string>
+    <string name="login_as_admin">Ingresar como administrador</string>
+>>>>>>> 73cd9f02e1908f9c9f6d6131fa826616944cf866
 </resources>
