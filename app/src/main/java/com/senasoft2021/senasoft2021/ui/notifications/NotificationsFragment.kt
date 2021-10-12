@@ -2,6 +2,7 @@ package com.senasoft2021.senasoft2021.ui.notifications
 
 import android.app.Activity
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -47,7 +48,6 @@ class NotificationsFragment : Fragment(), HuaweiMap.OnPoiClickListener {
      */
     private fun permisoMapaService(){
         val permisoMap=ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION)
-
         if (permisoMap==PackageManager.PERMISSION_DENIED){
             ActivityCompat.requestPermissions(requireContext() as Activity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION) ,1)
         }else{
