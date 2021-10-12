@@ -24,4 +24,6 @@
     <string name="click_here_to_insert_image">Click qui para ingresar una imagen</string>
     <string name="select_star_date">Seleccionar la fecha de inicio</string>
     <string name="select_end_date">Seleccionar la fecha de finalización</string>
+    <string name="title">Titulo</string>
+    <string name="description">Descripción</string>
 </resources>
