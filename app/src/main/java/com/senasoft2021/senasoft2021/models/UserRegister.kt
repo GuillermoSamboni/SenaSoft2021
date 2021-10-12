@@ -24,6 +24,6 @@ data class UserRegister(
     var password:String="",
 
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    var qrCode:ByteArray= byteArrayOf()
+    var qrCode:ByteArray
 
 )

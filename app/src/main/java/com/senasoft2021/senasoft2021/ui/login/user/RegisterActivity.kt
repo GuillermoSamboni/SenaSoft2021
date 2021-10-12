@@ -28,6 +28,7 @@ import com.senasoft2021.senasoft2021.databinding.ActivityRegisterBinding
 import com.senasoft2021.senasoft2021.extension_function.showToast
 import com.senasoft2021.senasoft2021.models.UserRegister
 import com.senasoft2021.senasoft2021.validations.Validations
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
@@ -76,6 +77,9 @@ class RegisterActivity : AppCompatActivity() {
         val confirmpass=binding.idTxtRegisterConfirmPass.text.toString().trim()
 
 
+
+
+
         //verificar si el email ingresado es real
         if(!emailReal(email)){
             this.showToast("Ingrese un email real")
@@ -100,7 +104,9 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
 
-        val user=UserRegister(0,name,phone,email,pass)
+        val outCode=ByteArrayOutputStream()
+        codeBar.compress(Bitmap.CompressFormat.PNG, 100, outCode)
+        val user=UserRegister(0,name,phone,email,pass, outCode.toByteArray())
 
         //registrar al usuario
         if(RoomDatabaseClient.registerUser(this,user)){
@@ -109,7 +115,6 @@ class RegisterActivity : AppCompatActivity() {
         }
         else
             this.showToast("Ha ocurrrido un error")
-
 
 
 
@@ -212,5 +217,10 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
     }
+
+//    private fun encodeCodeQr(bitmap: Bitmap):String{
+//
+//    }
+
 
 }
