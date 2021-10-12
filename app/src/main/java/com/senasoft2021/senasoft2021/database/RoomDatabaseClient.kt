@@ -109,13 +109,19 @@ abstract class RoomDatabaseClient : RoomDatabase() {
 
         //operaciones para los admin---------------------
 
-        fun loginAdmin(name:String, pass:String, context: Context){
+        fun loginAdmin(name:String, pass:String, context: Context): Boolean {
             val bd= getInstance(context).adminDao()
             var retorno=false
 
             runBlocking {
-
+                val admin=bd.selectAdminByDni(pass)
+                admin?.let {
+                    if((name == pass) && name == it.dni)
+                        retorno = true
+                }
             }
+
+            return retorno
 
 
         }

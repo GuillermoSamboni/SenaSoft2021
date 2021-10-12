@@ -19,6 +19,6 @@ interface AdminDao {
     fun listAllAdmin():MutableList<AdminRegister>
 
     @Query("SELECT * FROM admin where dni = :dni")
-    fun listAllAdmin(dni:String):AdminRegister?
+    fun selectAdminByDni(dni:String):AdminRegister?
 
 }

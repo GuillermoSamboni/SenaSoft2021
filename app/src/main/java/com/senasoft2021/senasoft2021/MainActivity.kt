@@ -14,6 +14,7 @@ import android.widget.Toast
 import com.huawei.hms.support.hwid.HuaweiIdAuthManager
 import com.huawei.hms.support.hwid.request.HuaweiIdAuthParams
 import com.huawei.hms.support.hwid.request.HuaweiIdAuthParamsHelper
+import com.senasoft2021.senasoft2021.ui.login.admin.LoginAdminActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.idBtnLoginGoLoginAdmin.setOnClickListener {
-            //startActivity(Intent(this,LoginAdminActivity::class.java))
+            startActivity(Intent(this, LoginAdminActivity::class.java))
         }
 
         binding.idBtnLogin.setOnClickListener { loginUser() }
