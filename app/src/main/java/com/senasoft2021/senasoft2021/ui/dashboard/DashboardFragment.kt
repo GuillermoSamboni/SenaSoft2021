@@ -1,5 +1,6 @@
 package com.senasoft2021.senasoft2021.ui.dashboard
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.senasoft2021.senasoft2021.R
 import com.senasoft2021.senasoft2021.databinding.FragmentDashboardBinding
+import com.senasoft2021.senasoft2021.ui.dashboard.activitie.CompetenciaActivity
 
 class DashboardFragment : Fragment() {
 
@@ -31,10 +33,9 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
+        binding.idBtnFloatDenuncias.setOnClickListener { startActivity(Intent(requireContext(), CompetenciaActivity::class.java)) }
+
         return root
     }
 

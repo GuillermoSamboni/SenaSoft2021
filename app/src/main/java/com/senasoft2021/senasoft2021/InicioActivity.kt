@@ -1,5 +1,6 @@
 package com.senasoft2021.senasoft2021
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.senasoft2021.senasoft2021.databinding.ActivityInicioBinding
+import com.senasoft2021.senasoft2021.ui.controller.ProfileActivity
 
 class InicioActivity : AppCompatActivity() {
 
@@ -15,6 +17,7 @@ class InicioActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        this.supportActionBar?.hide()
 
         binding = ActivityInicioBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -31,5 +34,7 @@ class InicioActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        binding.ibBtnProfile.setOnClickListener { startActivity(Intent(this, ProfileActivity::class.java)) }
     }
 }
