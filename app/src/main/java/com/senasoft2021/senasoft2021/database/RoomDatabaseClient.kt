@@ -5,14 +5,16 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.senasoft2021.senasoft2021.models.AdminRegister
+import com.senasoft2021.senasoft2021.models.EventRegister
 import com.senasoft2021.senasoft2021.models.UserRegister
 import kotlinx.coroutines.runBlocking
 
-@Database(version = 1, entities = [UserRegister::class, AdminRegister::class])
+@Database(version = 1, entities = [UserRegister::class, AdminRegister::class, EventRegister::class])
 abstract class RoomDatabaseClient : RoomDatabase() {
 
     abstract fun userDao(): UserDao
     abstract fun adminDao(): AdminDao
+    abstract fun  eventDao():EventDao
 
     companion object {
 
@@ -97,6 +99,9 @@ abstract class RoomDatabaseClient : RoomDatabase() {
         }
 
 
+        /**
+         * obtener la instancia del ultimo usuario logeado en la app
+         */
         fun getCurrentUser(context: Context): UserRegister? {
             val bd = getInstance(context).userDao()
             val shared = SharedPreferencesClient.getSharedPreferences(context)
@@ -108,17 +113,47 @@ abstract class RoomDatabaseClient : RoomDatabase() {
 
 
         //operaciones para los admin---------------------
-
-        fun loginAdmin(name:String, pass:String, context: Context){
+        /**
+         * loguear un admin con una cuanta previamente registrado
+         */
+        fun loginAdmin(name:String, pass:String, context: Context): Boolean {
             val bd= getInstance(context).adminDao()
             var retorno=false
 
             runBlocking {
-
+                val admin=bd.selectAdminByDni(pass)
+                admin?.let {
+                    if((name == pass) && name == it.dni)
+                        retorno = true
+                }
             }
+
+            return retorno
 
 
         }
+
+
+        //operaciones para los eventos----------------------------
+
+        /**
+         * registrar un nuevo evento en la bd
+         */
+        fun registerEvent(eventRegister: EventRegister,context: Context):Boolean{
+            val bd= getInstance(context).eventDao()
+            var retorno = false
+            runBlocking {
+                bd.insertEvent(eventRegister)
+                retorno = true
+            }
+            return retorno
+        }
+
+        /**
+         * listar todos los eventos registrados
+         */
+        fun listAllEvents(context: Context) = getInstance(context).eventDao().listAllEvents()
+
 
 
     }//end Comp

@@ -34,10 +34,13 @@
 <!--            android:name=".InicioActivity"-->
 <!--            android:label="@string/title_activity_inicio" >-->
 
-        <activity android:name=".ui.login.user.LoginAdminActivity"></activity>
+
+        <activity android:name=".ui.login.admin.AdminActivity"></activity>
+        <activity android:name=".ui.login.admin.LoginAdminActivity" />
         <activity android:name=".ui.login.user.RegisterActivity" />
         <activity android:name=".ui.home.actiivtie.HelpActivity"></activity>
 
+        <activity android:name=".ui.home.actiivtie.HelpActivity" />
         <activity
             android:name=".InicioActivity"
             android:label="@string/title_activity_inicio"></activity>
