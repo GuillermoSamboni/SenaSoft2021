@@ -4,13 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.senasoft2021.senasoft2021.models.AdminRegister
 import com.senasoft2021.senasoft2021.models.UserRegister
 import kotlinx.coroutines.runBlocking
 
-@Database(version = 1, entities = [UserRegister::class])
+@Database(version = 1, entities = [UserRegister::class, AdminRegister::class])
 abstract class RoomDatabaseClient : RoomDatabase() {
 
     abstract fun userDao(): UserDao
+    abstract fun adminDao(): AdminDao
 
     companion object {
 
@@ -102,9 +104,22 @@ abstract class RoomDatabaseClient : RoomDatabase() {
 
             val id = shared.getInt(SharedPreferencesClient.KEY_ID_USER, -1)
             return bd.selectUserById(id)
+        }
+
+
+        //operaciones para los admin---------------------
+
+        fun loginAdmin(name:String, pass:String, context: Context){
+            val bd= getInstance(context).adminDao()
+            var retorno=false
+
+            runBlocking {
+
+            }
 
 
         }
+
 
     }//end Comp
 
