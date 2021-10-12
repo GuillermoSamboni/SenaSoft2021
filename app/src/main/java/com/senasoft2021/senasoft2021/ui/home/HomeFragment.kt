@@ -1,5 +1,6 @@
 package com.senasoft2021.senasoft2021.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.senasoft2021.senasoft2021.R
 import com.senasoft2021.senasoft2021.databinding.FragmentHomeBinding
+import com.senasoft2021.senasoft2021.ui.home.actiivtie.HelpActivity
 
 class HomeFragment : Fragment() {
 
@@ -31,10 +33,9 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
+
+        binding.idBtnHelp.setOnClickListener { startActivity(Intent(requireContext(), HelpActivity::class.java)) }
         return root
     }
 
