@@ -12,6 +12,7 @@ import com.senasoft2021.senasoft2021.databinding.FragmentDashboardBinding
 import com.senasoft2021.senasoft2021.models.EventRegister
 import com.senasoft2021.senasoft2021.ui.dashboard.activitie.CompetenciaActivity
 import com.senasoft2021.senasoft2021.ui.login.admin.EventsViewModel
+import com.senasoft2021.senasoft2021.ui.login.admin.InfoEventFragment
 
 class DashboardFragment : Fragment() {
 
@@ -54,6 +55,10 @@ class DashboardFragment : Fragment() {
 
             binding.idRcyDashBoardList.apply {
                 adapter=adapterEvents
+            }
+
+            adapterEvents.setOnClickListener{
+                val infoEvent=InfoEventFragment()
             }
 
         }

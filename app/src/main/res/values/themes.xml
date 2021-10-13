@@ -15,6 +15,11 @@
     </style>
 
 
+    <!--  para los dialogos a pantalla completa  -->
+    <style name="dialog_full_screen">
+
+    </style>
+
     <!--  estilos para los textInputEditText  -->
     <style name="textIntPutLayoutStyles" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/primary_color</item>
