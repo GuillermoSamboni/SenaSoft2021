@@ -31,6 +31,9 @@ class InfoDenunciaFragment(private val denuncia:DenunciaRegister) : DialogFragme
         return dialog
     }
 
+    /**
+     * mostrar la info del evento seleccionado
+     */
     private fun showInfo() {
         binding.idTxtInfoDenunciaTitle.text=denuncia.title
         binding.idTxtInfoDenunciaDate.text="Registrada el: ${denuncia.date}"

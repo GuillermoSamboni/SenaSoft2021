@@ -25,6 +25,10 @@ class DenunciaActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * inicializar el recyclerView
+     * y agregarle el evento onclick a el adapter
+     */
     private fun initRecyclerView() {
 
         val list=RoomDatabaseClient.listAllDenuncias(this)
@@ -42,6 +46,7 @@ class DenunciaActivity : AppCompatActivity() {
         adapterDenuncias.setOnClickListener{
             val position=binding.idRcyDenunciasList.getChildAdapterPosition(it)
             val denuncia=list[position]
+            //mostrar la info de la denuncia seleccionada
             val infoDenuncia=InfoDenunciaFragment(denuncia)
             infoDenuncia.show(supportFragmentManager,"")
         }
