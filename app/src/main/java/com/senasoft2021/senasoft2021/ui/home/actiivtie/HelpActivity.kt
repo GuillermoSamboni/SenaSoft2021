@@ -77,11 +77,11 @@ class HelpActivity : AppCompatActivity() {
      */
 
     private fun sendMessageHelp(){
-        if (binding.idTxtMessageHelp.text.isEmpty() || uriImage!=null){
+        if (!(binding.idTxtMessageHelp.text.isEmpty() || uriImage!=null)){
             var intentSend=Intent()
             intentSend.action=Intent.ACTION_VIEW
-            val defaultNumber="+573163254647"
-            var stingMessage="whatsapp://send?phone=+ $defaultNumber"+"${binding.idTxtMessageHelp.text}"
+            val defaultNumber="+57 3163254647"
+            var stingMessage="whatsapp://send?phone=+ $defaultNumber" + "${binding.idTxtMessageHelp.text}"
             intentSend.data= Uri.parse(stingMessage)
             startActivity(intentSend)
         }else{
