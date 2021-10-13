@@ -27,18 +27,19 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.supportActionBar?.hide()
-        binding= ActivityProfileBinding.inflate(layoutInflater)
+        binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.idBtnFloatDeniuncia.setOnClickListener { identityKit()
+        binding.idBtnFloatDeniuncia.setOnClickListener {
+            identityKit()
 
-            Toast.makeText(this, "hello identity", Toast.LENGTH_SHORT).show()}
+            Toast.makeText(this, "hello identity", Toast.LENGTH_SHORT).show()
+        }
 
-        intetrescial= InterstitialAd(this)
-        intetrescial!!.adId ="testb4znbuh3n2"
+        intetrescial = InterstitialAd(this)
+        intetrescial!!.adId = "testb4znbuh3n2"
         adsLoad()
 
     }
-
 
     override fun onBackPressed() {
         //super.onBackPressed()
