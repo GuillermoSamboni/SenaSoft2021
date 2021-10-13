@@ -78,9 +78,6 @@ class MainActivity : AppCompatActivity() {
 
         return emptyName || emptyPass
 
-        binding= ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        binding.idBtnLoginHuawei.setOnClickListener { loginHuawei() }
     }
 
     private fun loginHuawei() {

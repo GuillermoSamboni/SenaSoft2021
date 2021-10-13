@@ -28,24 +28,30 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        eventViewModel =
-            ViewModelProvider(requireActivity()).get(EventsViewModel::class.java)
+
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
+        eventViewModel =
+            ViewModelProvider(requireActivity()).get(EventsViewModel::class.java)
 
         binding.idBtnFloatDenuncias.setOnClickListener { startActivity(Intent(requireContext(), CompetenciaActivity::class.java)) }
-
-        initRecyclerView()
 
         return root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRecyclerView()
+    }
+
+    /**
+     * inicializar el recyclerView
+     */
     private fun initRecyclerView() {
         val list= mutableListOf<EventRegister>()
         val adapterEvents=EventAdapter(list)
-        eventViewModel.getEvents(requireContext()).observe(requireActivity()){
+        eventViewModel.getEvents(requireContext()).observe(this){
 
             list.apply {
                 clear()
@@ -58,7 +64,11 @@ class DashboardFragment : Fragment() {
             }
 
             adapterEvents.setOnClickListener{
+                val position=binding.idRcyDashBoardList.getChildAdapterPosition(it)
+                val event=list[position]
                 val infoEvent=InfoEventFragment()
+                eventViewModel.setEvent(event)
+                infoEvent.show(childFragmentManager,"")
             }
 
         }
