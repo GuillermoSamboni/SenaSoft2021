@@ -44,7 +44,7 @@ class DashboardFragment : Fragment() {
     private fun initRecyclerView() {
         val list= mutableListOf<EventRegister>()
         val adapterEvents=EventAdapter(list)
-        eventViewModel.getEvents(requireContext()).observe(requireActivity()){
+        eventViewModel.getEvents(requireContext()).observe(viewLifecycleOwner){
 
             list.apply {
                 clear()
