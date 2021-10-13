@@ -12,7 +12,6 @@ import com.senasoft2021.senasoft2021.databinding.FragmentDashboardBinding
 import com.senasoft2021.senasoft2021.models.EventRegister
 import com.senasoft2021.senasoft2021.ui.dashboard.activitie.CompetenciaActivity
 import com.senasoft2021.senasoft2021.ui.login.admin.EventsViewModel
-import com.senasoft2021.senasoft2021.ui.login.admin.InfoEventFragment
 
 class DashboardFragment : Fragment() {
 
@@ -28,30 +27,24 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
         eventViewModel =
             ViewModelProvider(requireActivity()).get(EventsViewModel::class.java)
 
+        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+
         binding.idBtnFloatDenuncias.setOnClickListener { startActivity(Intent(requireContext(), CompetenciaActivity::class.java)) }
+
+        initRecyclerView()
 
         return root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initRecyclerView()
-    }
-
-    /**
-     * inicializar el recyclerView
-     */
     private fun initRecyclerView() {
         val list= mutableListOf<EventRegister>()
         val adapterEvents=EventAdapter(list)
-        eventViewModel.getEvents(requireContext()).observe(this){
+        eventViewModel.getEvents(requireContext()).observe(requireActivity()){
 
             list.apply {
                 clear()
@@ -61,14 +54,6 @@ class DashboardFragment : Fragment() {
 
             binding.idRcyDashBoardList.apply {
                 adapter=adapterEvents
-            }
-
-            adapterEvents.setOnClickListener{
-                val position=binding.idRcyDashBoardList.getChildAdapterPosition(it)
-                val event=list[position]
-                val infoEvent=InfoEventFragment()
-                eventViewModel.setEvent(event)
-                infoEvent.show(childFragmentManager,"")
             }
 
         }

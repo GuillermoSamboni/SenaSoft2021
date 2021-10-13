@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.senasoft2021.senasoft2021.R
-import com.senasoft2021.senasoft2021.adapters.EventAdapter
 import com.senasoft2021.senasoft2021.databinding.FragmentHomeAdminBinding
 import com.senasoft2021.senasoft2021.models.EventRegister
 
@@ -47,20 +46,20 @@ class HomeAdminFragment : Fragment() {
     private fun initRecycler() {
 
         val eventList = mutableListOf<EventRegister>()
-        val adapterEvents= EventAdapter(eventList)
+        //val adapterEvents= eventAdapter(eventList)
 
         eventsViewModel.getEvents(requireContext()).observe(requireActivity()){
 
             eventList.apply {
                 clear()
                 addAll(it)
-                adapterEvents.notifyDataSetChanged()
+                //adapterEvents.notifyDataSetChange()
             }
 
         }
 
         binding.idRcyHomeAdminList.apply {
-            adapter=adapterEvents
+
         }
 
     }

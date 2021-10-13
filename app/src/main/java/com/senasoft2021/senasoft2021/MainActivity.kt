@@ -36,7 +36,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginAdminActivity::class.java))
         }
 
-        binding.idBtnLogin.setOnClickListener { loginUser() }
+        binding.idBtnLogin.setOnClickListener { loginUser()}
+
+        binding.idBtnLoginHuawei.setOnClickListener { loginHuawei() }
 
     }
 
@@ -77,7 +79,6 @@ class MainActivity : AppCompatActivity() {
         val emptyPass=Validations.validateEditText(binding.idTxtLoginPass)
 
         return emptyName || emptyPass
-
     }
 
     private fun loginHuawei() {

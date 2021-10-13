@@ -15,11 +15,6 @@
     </style>
 
 
-    <!--  para los dialogos a pantalla completa  -->
-    <style name="dialog_full_screen">
-
-    </style>
-
     <!--  estilos para los textInputEditText  -->
     <style name="textIntPutLayoutStyles" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/primary_color</item>
@@ -27,13 +22,7 @@
         <item name="boxCornerRadiusBottomEnd">10dp</item>
     </style>
 
-    <!-- animcaion para los dialogos   -->
-    <style name="dialog_anim">
-
-        <item name="android:windowEnterAnimation">@anim/dialog_enter_anim</item>
-        <item name="android:windowExitAnimation">@anim/dialog_exit_anim</item>
-
-    </style>
+    <!--    -->
 
 
 </resources>

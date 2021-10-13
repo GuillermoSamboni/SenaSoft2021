@@ -6,6 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".ui.login.admin.AdminActivity">
 
+    <Toolbar
+        android:background="@color/primary_color"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/senasoft2021" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end">
+
+            <ImageButton
+                android:layout_gravity="center"
+                android:id="@+id/ibBtnScanner"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="right"
+                android:src="@drawable/ic_scanner" />
+        </LinearLayout>
+
+    </Toolbar>
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -15,6 +46,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:navGraph="@navigation/admin_navigation" />
 </androidx.constraintlayout.widget.ConstraintLayout>
