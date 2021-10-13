@@ -29,7 +29,7 @@ class HelpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityHelpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        supportActionBar?.hide()
         locationService?.starRequest()
 
         binding.idBtnCamera.setOnClickListener { openCamera() }
@@ -85,11 +85,11 @@ class HelpActivity : AppCompatActivity() {
      */
 
     private fun sendMessageHelp(){
-        if (!(binding.idTxtMessageHelp.text.isEmpty() || uriImage!=null)){
+        if (binding.idTxtMessageHelp.text!!.isNotEmpty() && uriImage!=null){
             var intentSend=Intent()
             intentSend.action=Intent.ACTION_VIEW
             val defaultNumber="+57 3163254647"
-            var stingMessage="whatsapp://send?phone=+ $defaultNumber" + "${binding.idTxtMessageHelp.text}" + Constantes.myLocation
+            var stingMessage="whatsapp://send?phone=+ $defaultNumber" + "\n ${binding.idTxtMessageHelp.text}" + Constantes.myLocation
             intentSend.data= Uri.parse(stingMessage)
             startActivity(intentSend)
         }else{
@@ -106,7 +106,8 @@ class HelpActivity : AppCompatActivity() {
                 }catch (e:Exception){
                     Log.d("Error send", e.toString())
                 }
-            }else{
+            }
+            else{
                 Toast.makeText(this, "no se eligio ninguna imagen", Toast.LENGTH_SHORT).show()
             }
         }

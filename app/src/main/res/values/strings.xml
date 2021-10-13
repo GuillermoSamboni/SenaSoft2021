@@ -39,4 +39,6 @@
     <string name="no_denuncias">No hay denuncias registradas</string>
     <string name="register_denuncia">Registrar Denuncia</string>
     <string name="no_eventos">No se han registrado nuevos eventos</string>
+    <string name="tomar_foto">Tomar Foto</string>
+    <string name="abrir_gallery">Escoger desde la galeria</string>
 </resources>

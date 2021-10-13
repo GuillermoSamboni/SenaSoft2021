@@ -94,8 +94,12 @@ abstract class RoomDatabaseClient : RoomDatabase() {
             runBlocking {
 
                 for (user in list)
-                    if (user.name == name && user.password == pass)
+                    if (user.name == name && user.password == pass){
+                        val user = bd.selectUserByName(name)
+                        SharedPreferencesClient.setSessionUser(user!!,context)
                         retorno = true
+                    }
+
             }
             return retorno
         }
