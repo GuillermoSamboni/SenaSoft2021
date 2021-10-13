@@ -11,6 +11,8 @@ import com.bumptech.glide.Glide
 import com.senasoft2021.senasoft2021.R
 import com.senasoft2021.senasoft2021.databinding.FragmentInfoEventBinding
 import com.senasoft2021.senasoft2021.extension_function.showToast
+import com.senasoft2021.senasoft2021.huawei.pushKit.GetTokenPushService
+import com.senasoft2021.senasoft2021.huawei.pushKit.SubscribeToken
 import com.senasoft2021.senasoft2021.models.EventRegister
 
 
@@ -19,6 +21,10 @@ class InfoEventFragment : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL,R.style.dialog_full_screen)
+
+        GetTokenPushService().getToken(requireContext()){
+            Log.d("ltoke", "$it")
+        }
 
     }
 
@@ -37,7 +43,15 @@ class InfoEventFragment : DialogFragment() {
            it?.let { loadData(it) }
         }
 
-        binding.idBtnInfoEventSubscribeMe.setOnClickListener { requireContext().showToast("Suscripción exitosa")}
+        binding.idBtnInfoEventSubscribeMe.setOnClickListener {
+
+            var subscribe=SubscribeToken()
+            //subscribe.subscribe(requireContext(), "${binding.idTxtInfoEventTitle.text}")
+            var subTitle=binding.idTxtInfoEventTitle.text
+
+            subscribe.subscribe(requireContext(), "$subTitle")
+
+        }
         addScrollChange()
 
 
@@ -109,6 +123,9 @@ class InfoEventFragment : DialogFragment() {
         binding.idTxtInfoEventDescrip.text=event.description
         binding.idTxtInfoEventStartDate.text="Fecha de inicio: ${event.startDate}"
         binding.idTxtInfoEventEndDate.text="Fecha de finalización: ${event.endDate}"
+
+
+
 
     }
 

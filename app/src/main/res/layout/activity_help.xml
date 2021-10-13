@@ -52,14 +52,15 @@
         app:srcCompat="@drawable/ic_folder" />
 
     <ImageView
-        android:layout_margin="10dp"
         android:id="@+id/idimageView"
-        android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginBottom="64dp"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="92dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/idBtnSend"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -73,4 +74,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="24dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

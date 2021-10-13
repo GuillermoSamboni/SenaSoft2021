@@ -3,6 +3,7 @@ package com.senasoft2021.senasoft2021.ui.home.actiivtie
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +13,9 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.senasoft2021.senasoft2021.constantes.Constantes
 import com.senasoft2021.senasoft2021.databinding.ActivityHelpBinding
+import com.senasoft2021.senasoft2021.huawei.location.LocationService
 import java.lang.Exception
 
 class HelpActivity : AppCompatActivity() {
@@ -20,15 +23,20 @@ class HelpActivity : AppCompatActivity() {
     var requesCodeCamera=1
     var requesCodeStorage=2
     private var uriImage:Uri?=null
+    private var locationService: LocationService? =null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityHelpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        locationService?.starRequest()
+
         binding.idBtnCamera.setOnClickListener { openCamera() }
         binding.idBtnStorage.setOnClickListener { openStorage() }
-        binding.idBtnSend.setOnClickListener { sendMessageHelp() }
+        binding.idBtnSend.setOnClickListener {
+            sendMessgeLocation()
+            sendMessageHelp() }
 
     }
 
@@ -81,7 +89,7 @@ class HelpActivity : AppCompatActivity() {
             var intentSend=Intent()
             intentSend.action=Intent.ACTION_VIEW
             val defaultNumber="+57 3163254647"
-            var stingMessage="whatsapp://send?phone=+ $defaultNumber" + "${binding.idTxtMessageHelp.text}"
+            var stingMessage="whatsapp://send?phone=+ $defaultNumber" + "${binding.idTxtMessageHelp.text}" + Constantes.myLocation
             intentSend.data= Uri.parse(stingMessage)
             startActivity(intentSend)
         }else{
@@ -104,4 +112,10 @@ class HelpActivity : AppCompatActivity() {
         }
     }
 
+    private fun sendMessgeLocation(){
+        if (locationService==null){
+            locationService= LocationService(this)
+            locationService!!.starRequest()
+        }
+    }
 }

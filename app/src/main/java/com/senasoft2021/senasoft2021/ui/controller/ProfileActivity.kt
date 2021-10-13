@@ -42,7 +42,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        //super.onBackPressed()
+         super.onBackPressed()
         showAds()
     }
 
