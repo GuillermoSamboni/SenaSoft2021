@@ -2,6 +2,7 @@ package com.senasoft2021.senasoft2021.ui.login.admin
 
 import android.app.Dialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.DialogFragment
@@ -37,7 +38,7 @@ class InfoEventFragment : DialogFragment() {
         }
 
         binding.idBtnInfoEventSubscribeMe.setOnClickListener { requireContext().showToast("Suscripción exitosa")}
-        //addScrollChange()
+        addScrollChange()
 
 
         return dialog;
@@ -47,9 +48,9 @@ class InfoEventFragment : DialogFragment() {
      * aniadir un escucha para el scrollVew, y asi
      * poder mostrar u ocultar los items
      */
-/*    private fun addScrollChange() {
+    private fun addScrollChange() {
 
-        binding.idScrollViewInfoEvent.setOnScrollChangeListener(object: View.OnScrollChangeListener{
+       /* binding.idScrollViewInfoEvent.setOnScrollChangeListener(object: View.OnScrollChangeListener{
             override fun onScrollChange(p0: View?, p1: Int, p2: Int, p3: Int, p4: Int) {
 
                 if(p2<p4){
@@ -59,16 +60,29 @@ class InfoEventFragment : DialogFragment() {
 
             }
 
-        })
+        })*/
 
-    }*/
+        binding.idScrollViewInfoEvent.viewTreeObserver.addOnScrollChangedListener {
+
+            val scrollY=binding.idScrollViewInfoEvent.scrollY
+            Log.d("InfoEventFagment","scroll y: $scrollY")
+
+            if(scrollY > 1 )
+                showSubsCribeButton(false)
+            else
+                showSubsCribeButton(true)
+
+        }
+
+
+    }
 
 
     /**
      * mostrar u ocultar el boton de subscripcion para
      * que no moleste el texto es muy largo
      */
-/*    private fun showSubsCribeButton(show:Boolean){
+    private fun showSubsCribeButton(show:Boolean){
 
         binding.idLinearInfoEvent.animate().apply {
             alpha(0f)
@@ -82,7 +96,7 @@ class InfoEventFragment : DialogFragment() {
         }
 
 
-    }*/
+    }
 
 
     /**
