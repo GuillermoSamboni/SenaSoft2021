@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.huawei.hms.ads.AdParam
 import com.huawei.hms.ads.InterstitialAd
 import com.huawei.hms.identity.Address
@@ -15,6 +16,7 @@ import com.huawei.hms.identity.entity.UserAddressRequest
 import com.huawei.hms.support.api.client.Status
 import com.huawei.openalliance.ad.beans.parameter.AdSlotParam
 import com.senasoft2021.senasoft2021.R
+import com.senasoft2021.senasoft2021.database.RoomDatabaseClient
 import com.senasoft2021.senasoft2021.databinding.ActivityProfileBinding
 import java.lang.Exception
 
@@ -35,6 +37,7 @@ class ProfileActivity : AppCompatActivity() {
             Toast.makeText(this, "hello identity", Toast.LENGTH_SHORT).show()
         }
 
+        loadDataUser()
         intetrescial = InterstitialAd(this)
         intetrescial!!.adId = "testb4znbuh3n2"
         adsLoad()
@@ -96,5 +99,25 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
     }
+
+
+    /**
+     * cargar y mostrar los datos del usuario
+     */
+    fun loadDataUser(){
+
+        val user=RoomDatabaseClient.getCurrentUser(this)
+
+        user?.let {
+            binding.idTxtProfileName.text=it.name
+            binding.idTxtProfilePhone.text=it.phone
+            binding.idTxtProfileEmail.text=it.email
+            Glide.with(this).load(it.qrCode).into(binding.idImgProfileImage)
+
+        }
+
+
+    }
+
 
 }

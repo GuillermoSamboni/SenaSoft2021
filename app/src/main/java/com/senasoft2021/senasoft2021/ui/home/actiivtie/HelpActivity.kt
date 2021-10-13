@@ -30,7 +30,12 @@ class HelpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityHelpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+<<<<<<< HEAD
 
+=======
+        supportActionBar?.hide()
+        locationService?.starRequest()
+>>>>>>> 83567c26419f5c4d53ad9357c495a626fa0e330d
 
         binding.idBtnCamera.setOnClickListener { openCamera() }
         binding.idBtnStorage.setOnClickListener { openStorage() }
@@ -84,6 +89,7 @@ class HelpActivity : AppCompatActivity() {
      */
 
     private fun sendMessageHelp(){
+<<<<<<< HEAD
 
         if (binding.idTxtMessageHelp.text.isNotEmpty() && uriImage!=null) {
             var intentSend = Intent()
@@ -91,6 +97,14 @@ class HelpActivity : AppCompatActivity() {
             val defaultNumber = "+57 3163254647"
             var stingMessage = "whatsapp://send?phone=+ $defaultNumber" + "${binding.idTxtMessageHelp.text}"
             intentSend.data = Uri.parse(stingMessage)
+=======
+        if (binding.idTxtMessageHelp.text!!.isNotEmpty() && uriImage!=null){
+            var intentSend=Intent()
+            intentSend.action=Intent.ACTION_VIEW
+            val defaultNumber="+57 3163254647"
+            var stingMessage="whatsapp://send?phone=+ $defaultNumber" + "\n ${binding.idTxtMessageHelp.text}" + Constantes.myLocation
+            intentSend.data= Uri.parse(stingMessage)
+>>>>>>> 83567c26419f5c4d53ad9357c495a626fa0e330d
             startActivity(intentSend)
         }else if(binding.idTxtMessageHelp.text.isEmpty() && uriImage==null){
             Toast.makeText(this, "holaa", Toast.LENGTH_SHORT).show()
@@ -107,7 +121,8 @@ class HelpActivity : AppCompatActivity() {
                 }catch (e:Exception){
                     Log.d("Error send", e.toString())
                 }
-            }else{
+            }
+            else{
                 Toast.makeText(this, "no se eligio ninguna imagen", Toast.LENGTH_SHORT).show()
             }
         }
