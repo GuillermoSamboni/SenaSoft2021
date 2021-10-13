@@ -39,6 +39,7 @@ class InfoEventFragment : DialogFragment() {
         binding.idBtnInfoEventSubscribeMe.setOnClickListener { requireContext().showToast("Suscripción exitosa")}
         //addScrollChange()
 
+
         return dialog;
     }
 
