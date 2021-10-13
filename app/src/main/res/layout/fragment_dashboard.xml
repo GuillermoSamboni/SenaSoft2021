@@ -16,6 +16,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/ic_edit_road"/>
 
+
+    <LinearLayout
+        android:id="@+id/idLinearDashBoard"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/no_eventos"
+            android:textColor="@color/primary_color"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:lottie_rawRes="@raw/empty_box_anim"
+            app:lottie_autoPlay="true"
+            app:lottie_repeatCount="10"/>
+
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/idRcyDashBoardList"
         android:layout_width="0dp"

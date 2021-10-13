@@ -5,16 +5,18 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.senasoft2021.senasoft2021.models.AdminRegister
+import com.senasoft2021.senasoft2021.models.DenunciaRegister
 import com.senasoft2021.senasoft2021.models.EventRegister
 import com.senasoft2021.senasoft2021.models.UserRegister
 import kotlinx.coroutines.runBlocking
 
-@Database(version = 1, entities = [UserRegister::class, AdminRegister::class, EventRegister::class])
+@Database(version = 1, entities = [UserRegister::class, AdminRegister::class, EventRegister::class, DenunciaRegister::class])
 abstract class RoomDatabaseClient : RoomDatabase() {
 
     abstract fun userDao(): UserDao
     abstract fun adminDao(): AdminDao
     abstract fun  eventDao():EventDao
+    abstract fun denunciaDao():DenunciaDao
 
     companion object {
 
@@ -153,6 +155,30 @@ abstract class RoomDatabaseClient : RoomDatabase() {
          * listar todos los eventos registrados
          */
         fun listAllEvents(context: Context) = getInstance(context).eventDao().listAllEvents()
+
+
+        //Operaciones para las denuncias---------------------------------------
+
+        /**
+         * registrar una nueva denuncia en la base de datos
+         *
+         */
+        fun insertDenuncia(denunciaRegister: DenunciaRegister, context: Context):Boolean{
+
+            var retorno=false
+            val bd= getInstance(context).denunciaDao()
+            runBlocking {
+                bd.insertDenuncia(denunciaRegister)
+                retorno = true
+            }
+
+            return retorno
+        }
+
+        /**
+         * listar todas las denuncias almacenadas en la bd
+         */
+        fun listAllDenuncias(context: Context)= getInstance(context).denunciaDao().listAllDenuncias()
 
 
 

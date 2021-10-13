@@ -36,4 +36,7 @@
     - Participar en los diferentes eventos que se realizan diariamente\n
     - Compartir rapidamente tus datos mediante un codigo QR\n
     </string>
+    <string name="no_denuncias">No hay denuncias registradas</string>
+    <string name="register_denuncia">Registrar Denuncia</string>
+    <string name="no_eventos">No se han registrado nuevos eventos</string>
 </resources>

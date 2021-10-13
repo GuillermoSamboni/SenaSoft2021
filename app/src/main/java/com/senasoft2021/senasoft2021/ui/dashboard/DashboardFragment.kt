@@ -53,6 +53,11 @@ class DashboardFragment : Fragment() {
                 adapterEvents.notifyDataSetChanged()
             }
 
+            if(list.isEmpty()){
+                binding.idLinearDashBoard.visibility=View.VISIBLE
+                binding.idRcyDashBoardList.visibility=View.GONE
+            }
+
             binding.idRcyDashBoardList.apply {
                 adapter=adapterEvents
             }
