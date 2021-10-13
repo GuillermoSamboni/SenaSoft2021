@@ -29,4 +29,11 @@
     <string name="jjjjjjj">MAODODS</string>
     <string name="puedes_scanear_algo_aqui">Puedes scanear algo aqui</string>
     <string name="subscribe_me">Suscribirme</string>
+    <string name="help">Pedir ayuda</string>
+    <string name="info_app">Nuestra prioridad es ayudar a las mujeres en todo lo posible\n <b>En esta app puedes:</b>\n
+    - Pedir ayuda sobre algún problema o dificultad que tengas\n
+    - Si tienes alguna denuncia o necesitas acesoramiento en alguna situación, pudes pedirlo\n
+    - Participar en los diferentes eventos que se realizan diariamente\n
+    - Compartir rapidamente tus datos mediante un codigo QR\n
+    </string>
 </resources>
