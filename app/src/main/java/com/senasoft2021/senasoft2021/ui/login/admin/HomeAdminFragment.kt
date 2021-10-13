@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.senasoft2021.senasoft2021.R
 import com.senasoft2021.senasoft2021.databinding.FragmentHomeAdminBinding
 import com.senasoft2021.senasoft2021.models.EventRegister
 
@@ -35,7 +37,7 @@ class HomeAdminFragment : Fragment() {
 
         eventsViewModel=ViewModelProvider(requireActivity()).get(EventsViewModel::class.java)
 
-        binding.idBtnHomeAdminCreateEvent.setOnClickListener {  }
+        binding.idBtnHomeAdminCreateEvent.setOnClickListener { findNavController().navigate(R.id.action_homeAdminFragment_to_createEventFragment)}
 
         initRecycler()
 
