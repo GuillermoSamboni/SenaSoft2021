@@ -17,26 +17,26 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    signingConfigs{
-        release{
-            storeFile file ('key.jks')
-            keyAlias "key"
-            storePassword "123456"
-            keyPassword "123456"
-            v1SigningEnabled true
-            v2SigningEnabled true
-        }
-    }
+//    signingConfigs{
+//        release{
+//            storeFile file ('key.jks')
+//            keyAlias "key"
+//            storePassword "123456"
+//            keyPassword "123456"
+//            v1SigningEnabled true
+//            v2SigningEnabled true
+//        }
+//    }
     buildTypes {
         release {
-            signingConfig signingConfigs.release
+            //signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        debbug{
-            signingConfig signingConfigs.release
-            debuggable true
-        }
+//        debbug{
+//            signingConfig signingConfigs.release
+//            debuggable true
+//        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
