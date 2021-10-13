@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.huawei.hms.ads.AdParam
 import com.huawei.hms.ads.InterstitialAd
 import com.huawei.hms.identity.Address
@@ -28,7 +29,9 @@ class ProfileActivity : AppCompatActivity() {
         this.supportActionBar?.hide()
         binding= ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.idBtnFloatDeniuncia.setOnClickListener { identityKit() }
+        binding.idBtnFloatDeniuncia.setOnClickListener { identityKit()
+
+            Toast.makeText(this, "hello identity", Toast.LENGTH_SHORT).show()}
 
         intetrescial= InterstitialAd(this)
         intetrescial!!.adId ="testb4znbuh3n2"
