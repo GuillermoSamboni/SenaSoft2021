@@ -9,24 +9,30 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.getkeepsafe.taptargetview.TapTarget
+import com.getkeepsafe.taptargetview.TapTargetView
 import com.huawei.hms.videoeditor.ui.api.MediaApplication
 import com.huawei.hms.videoeditor.ui.api.MediaApplication.START_MODE_IMPORT_FROM_MEDIA
 import com.huawei.hms.videoeditor.ui.api.MediaExportCallBack
 import com.huawei.hms.videoeditor.ui.api.MediaInfo
 import com.huawei.hms.videoeditor.ui.api.VideoEditorLaunchOption
+import com.senasoft2021.senasoft2021.R
+import com.senasoft2021.senasoft2021.database.SharedPreferencesClient
 import com.senasoft2021.senasoft2021.databinding.ActivityCompetenciaBinding
 
 
 class CompetenciaActivity : AppCompatActivity() {
-    lateinit var binding:ActivityCompetenciaBinding
+    lateinit var binding: ActivityCompetenciaBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.supportActionBar?.hide()
 
-        binding= ActivityCompetenciaBinding.inflate(layoutInflater)
+        binding = ActivityCompetenciaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         permisosStorage()
+
+        targetToBtnCompetencia()
 
         binding.idBtnEditarVideo.setOnClickListener { editarVideoCompetncia() }
 
@@ -34,11 +40,14 @@ class CompetenciaActivity : AppCompatActivity() {
     }
 
     private fun editarVideoCompetncia() {
-        MediaApplication.getInstance().setApiKey("CwEAAAAAhyXk7a+Aj8V7NwMWAdYEvgKyxmy29DdF9Sd1yYfiR1KONfrpFBgrt9gdHmdJA2+ESTGuQyoV/5NFqPYutlki6dasoE8=")
-        MediaApplication.getInstance().setLicenseId("354DB3460FB49FDDDDDAE5F2D4F7EFA9A8FF2A1C7962E3B7EF107CE031C174CC")
+        MediaApplication.getInstance()
+            .setApiKey("CwEAAAAAhyXk7a+Aj8V7NwMWAdYEvgKyxmy29DdF9Sd1yYfiR1KONfrpFBgrt9gdHmdJA2+ESTGuQyoV/5NFqPYutlki6dasoE8=")
+        MediaApplication.getInstance()
+            .setLicenseId("354DB3460FB49FDDDDDAE5F2D4F7EFA9A8FF2A1C7962E3B7EF107CE031C174CC")
 
         MediaApplication.getInstance().setOnMediaExportCallBack(callBack)
-        var optionsEditor:VideoEditorLaunchOption=VideoEditorLaunchOption.Builder().setStartMode(START_MODE_IMPORT_FROM_MEDIA).build()
+        var optionsEditor: VideoEditorLaunchOption =
+            VideoEditorLaunchOption.Builder().setStartMode(START_MODE_IMPORT_FROM_MEDIA).build()
         MediaApplication.getInstance().launchEditorActivity(this, optionsEditor)
     }
 
@@ -46,21 +55,55 @@ class CompetenciaActivity : AppCompatActivity() {
         override fun onMediaExportSuccess(mediaInfo: MediaInfo) {
             val mediaPath = mediaInfo.mediaPath
         }
+
         override fun onMediaExportFailed(errorCode: Int) {
 
         }
     }
 
-    private fun permisosStorage(){
-        var permisos=ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
-            if (permisos==PackageManager.PERMISSION_DENIED){
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 10)
-            }else{
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 10)
+    private fun permisosStorage() {
+        var permisos =
+            ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (permisos == PackageManager.PERMISSION_DENIED) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                    10
+                )
+            } else {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                    10
+                )
             }
-        }else{
+        } else {
             Toast.makeText(this, "No", Toast.LENGTH_SHORT).show()
         }
     }
+
+    /**
+     * enfocar el boton de competencia e indicar cual es su funcion,
+     * solo si es la primera vez que se accede a este apartado
+     */
+    private fun targetToBtnCompetencia() {
+
+        val fisrtTime = SharedPreferencesClient.firstTimeInCompetencias(this)
+
+        if (!fisrtTime) {
+            val target = TapTarget.forView(
+                binding.idCardEditarVideo,
+                getString(R.string.competencia),
+                getString(R.string.info_torneo)
+            )
+                .tintTarget(false)
+                .dimColor(R.color.primary_color)
+                .textColor(R.color.white)
+                .targetCircleColor(R.color.secondary_color)
+
+            TapTargetView.showFor(this, target)
+        }
+    }
+
 }
