@@ -110,7 +110,7 @@ class HelpActivity : AppCompatActivity() {
         sendintent.type = "image/*"
         sendintent.type = "text/plain"
         sendintent.setPackage("com.whatsapp")
- 
+
         if (uriImage != null) {
             sendintent.putExtra(Intent.EXTRA_STREAM, uriImage)
             sendintent.putExtra(Intent.EXTRA_TEXT, binding.idTxtMessageHelp.text.toString())
