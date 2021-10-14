@@ -31,6 +31,7 @@ import com.huawei.hms.site.api.model.DetailSearchResponse
 import com.huawei.hms.site.api.model.SearchStatus
 import com.huawei.hms.site.api.model.Site
 import com.senasoft2021.senasoft2021.databinding.FragmentNotificationsBinding
+import com.senasoft2021.senasoft2021.huawei.location.LocationService
 import java.net.URLEncoder
 
 class NotificationsFragment : Fragment(), HuaweiMap.OnPoiClickListener {
@@ -55,7 +56,7 @@ class NotificationsFragment : Fragment(), HuaweiMap.OnPoiClickListener {
         binding.idMapView.onCreate(null)
         binding.idMapView.getMapAsync{map->onMapReady(map)}
 
-        permisoGps()
+
 
         return root
     }
@@ -63,9 +64,7 @@ class NotificationsFragment : Fragment(), HuaweiMap.OnPoiClickListener {
      *
      */
 
-    fun permisoGps(){
-        startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
-    }
+
 
     private fun permisoMapaService(){
         val permisoMap=ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION)

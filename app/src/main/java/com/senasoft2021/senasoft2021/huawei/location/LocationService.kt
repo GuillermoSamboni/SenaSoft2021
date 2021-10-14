@@ -20,6 +20,7 @@ class LocationService(val context: Context): LocationCallback() {
 
 
 
+
     fun starRequest(){
         var settingClient= LocationServices.getSettingsClient(context)
         var buildRequest=LocationSettingsRequest.Builder()

@@ -42,5 +42,6 @@
     <string name="tomar_foto">Tomar Foto</string>
     <string name="abrir_gallery">Escoger desde la galeria</string>
     <string name="competencia">Competencias</string>
-    <string name="info_torneo">Crea, importa y edita tu contenido multimedia para participar en las competencias y poder ganar</string>
+    <string name="info_torneo">Crea, importa y edita tu contenido multimedia para participar en las competencias y poder ganar,
+        comparte con nostos tus creaciones, no te quedes por fuera </string>
 </resources>

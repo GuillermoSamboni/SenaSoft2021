@@ -6,10 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.activitie.CompetenciaActivity">
 
+    <Toolbar
+
+        android:background="@color/primary_color"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="@string/senasoft2021" />
+
+    </Toolbar>
 
     <ScrollView
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -21,9 +43,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="44dp"
                 android:text="@string/competencia"
-                android:textStyle="bold"
-                android:textSize="20sp"
                 android:textColor="@color/primary_color"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
@@ -45,8 +67,8 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center"
-                    android:padding="15dp"
                     android:layout_margin="10dp"
+                    android:padding="15dp"
                     app:srcCompat="@drawable/coup" />
             </androidx.cardview.widget.CardView>
 
@@ -75,8 +97,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView9"
                 app:lottie_autoPlay="true"
-                app:lottie_rawRes="@raw/champoship_anim"
-                app:lottie_loop="true"/>
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/champoship_anim" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
