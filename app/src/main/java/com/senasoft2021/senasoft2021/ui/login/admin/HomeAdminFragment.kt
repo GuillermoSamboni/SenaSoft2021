@@ -51,6 +51,11 @@ class HomeAdminFragment : Fragment() {
 
         eventsViewModel.getEvents(requireContext()).observe(requireActivity()){
 
+            if(it.isEmpty()){
+                binding.idLinearHomeAdmin.visibility=View.VISIBLE
+                binding.idRcyHomeAdminList.visibility=View.GONE
+            }
+
             eventList.apply {
                 clear()
                 addAll(it)

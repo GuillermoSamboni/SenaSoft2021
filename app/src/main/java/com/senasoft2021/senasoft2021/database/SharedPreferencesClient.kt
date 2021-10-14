@@ -21,9 +21,9 @@ class SharedPreferencesClient {
          * --
          */
         const val KEY_FIRST_TIME_IN_COMPETENCIAS = "FIRST_TIME_COMPE"
-        const val KEY_FIRST_TIME_IN_HOME = "FIRST_TIME_COMPE"
-        const val KEY_FIRST_TIME_IN_HELP = "FIRST_TIME_COMPE"
-        const val KEY_FIRST_TIME_IN_DASBOARD = "FIRST_TIME_COMPE"
+        const val KEY_FIRST_TIME_IN_HOME = "FIRST_TIME_HOME"
+        const val KEY_FIRST_TIME_IN_HELP = "FIRST_TIME_HELP"
+        const val KEY_FIRST_TIME_IN_DASBOARD = "FIRST_TIME_DASHBOARD"
         /**
          * ---
          */
@@ -50,6 +50,7 @@ class SharedPreferencesClient {
 
         /**
          * hacer una accion cuando sea la primare vez que se ingresa al apartado de competencias
+         * @return false si es laprimera vez en acceder - true en caso contrario
          */
         fun firstTimeInCompetencias(context: Context): Boolean {
             val shared = getSharedPreferences(context)
@@ -62,10 +63,11 @@ class SharedPreferencesClient {
 
         /**
          * hacer una accion cuando sea la primare vez que se ingresa al apartado de home
+         * @return false si es laprimera vez en acceder - true en caso contrario
          */
         fun firstTimeInHome(context: Context): Boolean {
             val shared = getSharedPreferences(context)
-            val firstTime = shared.getBoolean(KEY_FIRST_TIME_IN_HOME, false)
+            val firstTime = shared.getBoolean(KEY_FIRST_TIME_IN_HOME,false)
             if (!firstTime)
                 shared.edit().putBoolean(KEY_FIRST_TIME_IN_HOME, true).apply()
 
@@ -75,10 +77,11 @@ class SharedPreferencesClient {
 
         /**
          * hacer una accion cuando sea la primare vez que se ingresa al apartado de dashboard
+         * @return false si es laprimera vez en acceder - true en caso contrario
          */
         fun firstTimeInDashboard(context: Context): Boolean {
             val shared = getSharedPreferences(context)
-            val firstTime = shared.getBoolean(KEY_FIRST_TIME_IN_DASBOARD, false)
+            val firstTime = shared.getBoolean(KEY_FIRST_TIME_IN_DASBOARD,false)
             if (!firstTime)
                 shared.edit().putBoolean(KEY_FIRST_TIME_IN_DASBOARD, true).apply()
             return firstTime

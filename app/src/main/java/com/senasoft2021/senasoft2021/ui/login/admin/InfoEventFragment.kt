@@ -52,7 +52,7 @@ class InfoEventFragment : DialogFragment() {
             subscribe.subscribe(requireContext(), "$subTitle")
 
         }
-        addScrollChange()
+       // addScrollChange()
 
 
         return dialog;

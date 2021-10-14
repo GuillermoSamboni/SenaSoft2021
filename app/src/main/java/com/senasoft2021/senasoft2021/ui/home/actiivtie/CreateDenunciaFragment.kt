@@ -124,7 +124,8 @@ class CreateDenunciaFragment : DialogFragment() {
      * lanzan un intent que abre la galeria y obtiene una imagen
      */
     private fun launchIntentImage(){
-        val i= Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+        val i= Intent(Intent.ACTION_OPEN_DOCUMENT, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+        i.addCategory(Intent.CATEGORY_OPENABLE)
         launcherImages.launch(i)
     }
 

@@ -142,7 +142,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    app:lottie_rawRes="@raw/folder_anim"
+                    app:lottie_rawRes="@raw/picture_anim"
+                    app:lottie_loop="true"
+                    app:lottie_autoPlay="true"
                     app:lottie_repeatCount="8" />
 
                 <TextView
