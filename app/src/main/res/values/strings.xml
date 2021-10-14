@@ -41,4 +41,6 @@
     <string name="no_eventos">No se han registrado nuevos eventos</string>
     <string name="tomar_foto">Tomar Foto</string>
     <string name="abrir_gallery">Escoger desde la galeria</string>
+    <string name="competencia">Competencias</string>
+    <string name="info_torneo">Crea, importa y edita tu contenido multimedia para participar en las competencias y poden ganar</string>
 </resources>

@@ -63,5 +63,4 @@ class CompetenciaActivity : AppCompatActivity() {
             Toast.makeText(this, "No", Toast.LENGTH_SHORT).show()
         }
     }
-
 }
